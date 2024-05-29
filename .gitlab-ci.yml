@@ -1,0 +1,18 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: node:20.12.2
+  cache:
+    paths:
+      - node_modules/
+  before_script:
+    - source ~/.profile
+    - source ~/.bashrc
+    - export PATH="$PATH:~/.nvm/versions/node/v20.12.2/bin"
+  script:
+    - npm install
+    - npm run build
+  only:
+    - merge_requests

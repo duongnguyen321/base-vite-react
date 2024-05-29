@@ -1,0 +1,143 @@
+{
+  "commons": {
+    "back": "Quay lại",
+    "backHome": "Quay về trang chủ",
+    "backHomeTime": "Quay về trang chủ sau"
+  },
+  "errors": {
+    "form": {
+      "required": "Trường thông tin không được để trống!"
+    },
+    "page": {
+      "checkout": {
+        "notfound": "Đơn hàng không tồn tại hoặc đã bị xóa!",
+        "payed": "Đơn hàng đã đuợc thanh toán",
+        "cancel": "Đơn hàng đã bị hủy",
+        "expired": "Đơn hàng đã hết thời hạn thanh toán"
+      },
+      "404": {
+        "default": "Không tìm thấy trang"
+      }
+    },
+    "code": {
+      "1": "Thành công",
+      "-1": "Có lỗi xảy ra, vui lòng tải lại trang",
+      "-2": "Tài khoản không tồn tại",
+      "-3": "Mật khẩu không chính xác",
+      "-4": "Tài khoản bị khoá",
+      "-5": "Tài khoản này đã tồn tại trên hệ thống",
+      "-6": "Số điện thoại này đã tồn tại trên hệ thống",
+      "-7": "Email này đã tồn tại trên hệ thống",
+      "-8": "Người giới thiệu này không tồn tại trên hệ thống",
+      "-9": "Email này không tồn tại trên hệ thống",
+      "-10": "Thông tin xác thực không hợp lệ, vui lòng kiểm tra lại",
+      "-11": "Xác thực thất bại, vui lòng đăng kí lại",
+      "-12": "Token không hợp lệ",
+      "-19": "Mật khẩu cũ không đúng",
+      "-20": "Email này đã có người sử dụng",
+      "-21": "Số điện thoại này đã có người sử dụng",
+      "-22": "Mã xác thực không hợp lệ hoặc hết hạn",
+      "-23": "Tài khoản này đã được xác minh",
+      "-24": "Tài khoản này không tồn tại",
+      "-25": "Phiên đăng nhập này không tồn tại trên hệ thống",
+      "-26": "Phiên đăng nhập này đã hết hạn",
+      "-32": "Chức năng này đang tạm ngưng",
+      "-72": "Tài khoản email không tồn tại",
+      "-77": "Có lỗi xảy ra, vui lòng thử lại trong 5 phút",
+      "-206": "Mã xác thực không hợp lệ",
+      "-222": "Dữ liệu không hợp lệ",
+      "-10000": "Bạn phải đăng nhập để thực hiện chức năng này",
+      "-10001": "Phiên đăng nhập hết hạn, vui lòng đăng nhập lại",
+      "-10002": "Tài khoản đã bị khoá hoặc thu hồi",
+      "-15000": "Tài khoản không có quyền thực hiện chức năng này",
+      "-15002": "Bạn phải xác minh email trước khi thực hiện chức năng này",
+      "-24999": "Có lỗi trong quá trình xử lý, liên hệ CSKH",
+      "-24998": "Mã lỗi không tồn tại trên hệ thống",
+      "-29999": "Trang này không tồn tại"
+    }
+  },
+  "header": {
+    "topTitle": "Chào các bạn, mình là Dương!",
+    "nav": {
+      "PROFILE": "Trang cá nhân",
+      "LOGIN": "Đăng nhập",
+      "HOME": "Trang chủ",
+      "ABOUT": "Giới thiệu",
+      "CHECKOUT": "Thanh toán",
+      "404": "Không tìm thấy trang"
+    },
+    "sections": {
+      "someSection": {
+        "title": "Thanh điều hướng",
+        "items": [
+          {
+            "name": "Trang thanh toán",
+            "description": "Trang này nằm ngoài layout",
+            "link": "/checkout",
+            "icon": "Vi.svg"
+          },
+          {
+            "name": "Trang profile",
+            "description": "Trang này cần authentication",
+            "link": "/profile",
+            "icon": "Vi.svg"
+          },
+          {
+            "name": "Trang about",
+            "description": "Trang này không cần authentication",
+            "link": "/about",
+            "icon": "Vi.svg"
+          }
+        ]
+      },
+      "someSectionAgain": {
+        "title": "Thanh điều hướng (2)",
+        "items": [
+          {
+            "name": "Trang thanh toán",
+            "description": "Trang này nằm ngoài layout",
+            "link": "/checkout",
+            "icon": "Vi.svg"
+          },
+          {
+            "name": "Trang profile",
+            "description": "Trang này cần authentication",
+            "link": "/profile",
+            "icon": "Vi.svg"
+          },
+          {
+            "name": "Trang about",
+            "description": "Trang này không cần authentication",
+            "link": "/about",
+            "icon": "Vi.svg"
+          }
+        ]
+      },
+      "career": {
+        "title": "Tuyển dụng"
+      },
+      "help": {
+        "title": "Trợ giúp"
+      }
+    }
+  },
+  "footer": {
+    "name": "Chào mừng bạn đến với ndng.net",
+    "copy": "2024 duonguyen | https://ndng.net | All rights reserved"
+  },
+  "home": {
+    "title": "Trang chủ"
+  },
+  "about": {
+    "title": "Về Duongnuyen"
+  },
+  "login": {
+    "title": "Bấm vào đây để đăng nhập"
+  },
+  "profile": {
+    "title": "Bấm vào đây để đăng xuất"
+  },
+  "checkout": {
+    "title": "Trang thanh toán"
+  }
+}

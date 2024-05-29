@@ -1,0 +1,97 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@App/*": [
+        "./src/App/*"
+      ],
+      "@pages/*": [
+        "./src/App/pages/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ],
+      "@helpers/*": [
+        "./src/helpers/*"
+      ],
+      "@router/*": [
+        "./src/router/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@translation/*": [
+        "./src/assets/translation/*"
+      ],
+      "@i18n/*": [
+        "./src/i18n/*"
+      ],
+      "@i18n": [
+        "./src/i18n/index.ts"
+      ],
+      "@layout/*": [
+        "./src/layout/*"
+      ],
+      "@type/*": [
+        "./src/types/*"
+      ],
+      "@interface/*": [
+        "./src/types/interface/*"
+      ],
+      "@enum/*": [
+        "./src/types/enum/*"
+      ],
+      "@styles/*": [
+        "./src/assets/styles/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "typeRoots": [
+    "./node_modules/@types",
+    "./src/types"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

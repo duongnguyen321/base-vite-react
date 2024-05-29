@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  live-base-react:
+    build: ./
+    image: base-react
+    container_name: live-base-react
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "build client production ..."
+        npm run build
+        echo "copy ./dist to opt/dist ..."
+        cp -r /var/app/base-react/dist/* /opt/dist
+    volumes:
+      - /var/app/live-base-react/dist:/opt/dist
+volumes:
+  live-base-react: null

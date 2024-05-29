@@ -1,0 +1,6 @@
+.footer {
+  @apply max-w-[100vw] flex items-center justify-between flex-wrap mt-12 bg-color-900 dark:bg-color-300 text-color-50 dark:text-color-900 pt-15 pb-6 px-4;
+  * h2, h3, h4 {
+    @apply text-sm
+  }
+}

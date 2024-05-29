@@ -1,0 +1,143 @@
+{
+  "commons": {
+    "back": "Back",
+    "backHome": "Back to home page",
+    "backHomeTime": "Return to the home page after"
+  },
+  "errors": {
+    "form": {
+      "required": "This field cannot be empty!"
+    },
+    "page": {
+      "checkout": {
+        "notfound": "The order does not exist or has been deleted!",
+        "payed": "The order has been paid",
+        "cancel": "The order has been canceled",
+        "expired": "The order has expired"
+      },
+      "404": {
+        "default": "Page not found"
+      }
+    },
+    "code": {
+      "1": "Success",
+      "-1": "An error occurred, please reload the page",
+      "-2": "Account does not exist",
+      "-3": "Incorrect password",
+      "-4": "Account is locked",
+      "-5": "This account already exists in the system",
+      "-6": "This phone number already exists in the system",
+      "-7": "This email already exists in the system",
+      "-8": "This referrer does not exist in the system",
+      "-9": "This email does not exist in the system",
+      "-10": "Invalid authentication information, please check again",
+      "-11": "Authentication failed, please register again",
+      "-12": "Invalid token",
+      "-19": "Old password is incorrect",
+      "-20": "This email is already in use",
+      "-21": "This phone number is already in use",
+      "-22": "Invalid or expired verification code",
+      "-23": "This account has been verified",
+      "-24": "This account does not exist",
+      "-25": "This login session does not exist in the system",
+      "-26": "This login session has expired",
+      "-32": "This feature is temporarily suspended",
+      "-72": "Email account does not exist",
+      "-77": "An error occurred, please try again in 5 minutes",
+      "-206": "Invalid verification code",
+      "-222": "Invalid data",
+      "-10000": "You must log in to perform this function",
+      "-10001": "Login session expired, please log in again",
+      "-10002": "Account has been locked or revoked",
+      "-15000": "Account does not have permission to perform this function",
+      "-15002": "You must verify your email before performing this function",
+      "-24999": "An error occurred during processing, contact customer service",
+      "-24998": "Error code does not exist in the system",
+      "-29999": "This page does not exist"
+    }
+  },
+  "header": {
+    "topTitle": "Hello everyone, I'm Dương!",
+    "nav": {
+      "PROFILE": "Profile page",
+      "LOGIN": "Log in",
+      "HOME": "Home page",
+      "ABOUT": "About",
+      "CHECKOUT": "Checkout",
+      "404": "Page not found"
+    },
+    "sections": {
+      "someSection": {
+        "title": "Navigation",
+        "items": [
+          {
+            "name": "Checkout page",
+            "description": "This page is outside the layout",
+            "link": "/checkout",
+            "icon": "En.svg"
+          },
+          {
+            "name": "Profile page",
+            "description": "This page requires authentication",
+            "link": "/profile",
+            "icon": "En.svg"
+          },
+          {
+            "name": "About page",
+            "description": "This page does not require authentication",
+            "link": "/about",
+            "icon": "En.svg"
+          }
+        ]
+      },
+      "someSectionAgain": {
+        "title": "Navigation (2)",
+        "items": [
+          {
+            "name": "Checkout page",
+            "description": "This page is outside the layout",
+            "link": "/checkout",
+            "icon": "En.svg"
+          },
+          {
+            "name": "Profile page",
+            "description": "This page requires authentication",
+            "link": "/profile",
+            "icon": "En.svg"
+          },
+          {
+            "name": "About page",
+            "description": "This page does not require authentication",
+            "link": "/about",
+            "icon": "En.svg"
+          }
+        ]
+      },
+      "career": {
+        "title": "Careers"
+      },
+      "help": {
+        "title": "Help"
+      }
+    }
+  },
+  "footer": {
+    "name": "Welcome to ndng.net",
+    "copy": "2024 duonguyen | https://ndng.net | All rights reserved"
+  },
+  "home": {
+    "title": "Home page"
+  },
+  "about": {
+    "title": "About Duongnuyen"
+  },
+  "login": {
+    "title": "Click here to log in"
+  },
+  "profile": {
+    "title": "Click here to log out"
+  },
+  "checkout": {
+    "title": "Checkout page"
+  }
+}

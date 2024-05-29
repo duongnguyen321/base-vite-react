@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'scss/variable';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+  @media (max-width: 900px) {
+    font-size: 90%;
+  }
+  @media (max-width: 768px) {
+    font-size: 100%;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::selection {
+  @apply bg-green-600 dark:bg-green-100 text-color-50
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  overflow: hidden auto;
+  @apply bg-color-50 dark:bg-color-100 min-h-screen text-color-900;
+}
+
+img {
+  object-fit: cover !important;
+}
+
+%base-content {
+  @apply font-semibold my-2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %base-content;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h6 {
+  @apply text-base;
+}
+
+p {
+  @apply text-sm;
+}
+
+a {
+  @apply font-normal;
+  &:hover {
+    @apply underline;
+  }
+}
+
+a[target='_blank'] {
+  @apply drop-shadow-sm shadow-primary;
+}
+
+span,
+q,
+a {
+  @apply p-0 m-0 no-underline hover:no-underline;
+}
+
+ul {
+  @apply list-none;
+}
+
+em,
+i {
+  @apply italic;
+}
+
+q {
+  quotes: none;
+}
+
+table tr {
+  @apply border-b border-gray-200;
+}
+
+.p-m0 p {
+  @apply m-0 p-0;
+}
+
+span.non-break {
+  font-size: inherit;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track,
+.horizontal-scrollable::-webkit-scrollbar-track {
+  background: rgb(230, 225, 225);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb,
+.horizontal-scrollable::-webkit-scrollbar-thumb {
+  background: rgb(190, 183, 183);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:active,
+.horizontal-scrollable::-webkit-scrollbar-thumb:active {
+  @apply bg-primary;
+}
+
+.horizontal-scrollable {
+  overflow-x: auto;
+}
+
+.horizontal-scrollable::-webkit-scrollbar {
+  height: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+form {
+  *:focus {
+    outline: none;
+  }
+}

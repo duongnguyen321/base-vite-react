@@ -1,0 +1,102 @@
+$themes-map: (
+        "color": (
+                50: #edf7f6,
+                100: #c8e7e2,
+                200: #aedbd4,
+                300: #89cbc0,
+                400: #72c1b4,
+                500: #4fb1a1,
+                600: #48a193,
+                700: #387e72,
+                800: #2b6159,
+                900: #214a44,
+        ),
+        "blue": (
+                50: #e7ecf3,
+                100: #b6c5db,
+                200: #92a9c9,
+                300: #6082b1,
+                400: #4169a1,
+                500: #12448a,
+                600: #103e7e,
+                700: #0d3062,
+                800: #0a254c,
+                900: #081d3a,
+        ),
+        "green": (
+                50: #edf7f6,
+                100: #c8e7e2,
+                200: #aedbd4,
+                300: #89cbc0,
+                400: #72c1b4,
+                500: #4fb1a1,
+                600: #48a193,
+                700: #387e72,
+                800: #2b6159,
+                900: #214a44,
+        ),
+        "red": (
+                50: #fcf1ef,
+                100: #f5d2cc,
+                200: #f0bcb4,
+                300: #ea9e91,
+                400: #e58b7c,
+                500: #df6e5b,
+                600: #cb6453,
+                700: #9e4e41,
+                800: #7b3d32,
+                900: #5e2e26,
+        ),
+        "orange": (
+                50: #fdf4ee,
+                100: #f8dcc9,
+                200: #f4cbaf,
+                300: #f0b38a,
+                400: #eda473,
+                500: #e88d50,
+                600: #d38049,
+                700: #a56439,
+                800: #804e2c,
+                900: #613b22,
+        ),
+        "light": (
+                50: #f1fcfa,
+                100: #d4f2e7,
+                200: #b8e9de,
+                300: #9ce0d5,
+                400: #82d7cc,
+                500: #68cec3,
+                600: #5ebab0,
+                700: #4ea69e,
+                800: #3e928c,
+                900: #2f7d7a,
+        ),
+        "dark": (
+                50: #163534,
+                100: #1a423f,
+                200: #1e504b,
+                300: #214a44,
+                400: #267c72,
+                500: #2a8a80,
+                600: #2e988e,
+                700: #aedbd4,
+                800: #c8e7e2,
+                900: #edf7f6,
+        )
+);
+
+:root {
+  @each $theme-name, $color-values in $themes-map {
+    @each $color-name, $color-value in $color-values {
+      --#{$theme-name}-#{$color-name}: #{$color-value};
+    }
+  }
+}
+
+@each $name, $colors in $themes-map {
+  [data-theme="#{$name}"] {
+    @each $color-name, $color-value in $colors {
+      --color-#{$color-name}: #{$color-value};
+    }
+  }
+}

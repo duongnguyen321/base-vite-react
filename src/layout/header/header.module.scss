@@ -1,0 +1,102 @@
+.header {
+  @apply sticky max-w-[100vw] -top-10 flex justify-center items-center flex-col bg-color-50 dark:bg-color-200 drop-shadow-sm z-50;
+  > * {
+    @apply flex-1 container;
+  }
+
+  .header__top {
+    @apply z-50 text-white text-[16px] w-full h-10 bg-center text-center pb-10;
+    .banner {
+      background: url(./images/header__top-bg.webp) var(--green-300);
+      @apply w-full h-10 absolute left-0 right-0;
+      .header__top--title {
+        @apply leading-10 font-semibold;
+      }
+    }
+  }
+
+  .header__bottom {
+    @apply px-[15px] max-w-[100vw] cursor-pointer flex justify-between items-center w-full min-h-[68px] py-2;
+    .header__bottom--logo {
+      @apply transition-all relative z-50 w-fit order-2 md:order-1;
+    }
+
+    .header__bottom--menu {
+      @apply transition-all z-40 w-full md:w-fit order-1 flex flex-col md:flex-row gap-3 md:gap-6 fixed md:relative inset-0 md:pt-0 h-[200vh] md:h-auto;
+      .header__menu--wrapper {
+        @apply transition-all  py-2 md:h-fit px-4 md:px-0 font-semibold;
+        img {
+          @apply transition
+        }
+
+        .header__menu--data {
+          @apply flex justify-center flex-wrap max-w-[300px] md:-translate-x-[15%] gap-2 rounded-xl relative md:absolute transition overflow-hidden w-0 h-0 opacity-0 invisible;
+          .header__menu--wrap-text {
+            @apply h-fit;
+            .header__menu--arrow-next {
+              @apply w-4 h-4 hidden;
+            }
+
+            > img {
+              @apply translate-y-1/2;
+            }
+
+            & + p {
+              @apply text-[16px] opacity-80 ml-9;
+            }
+
+            a {
+              @apply ml-2;
+            }
+
+            &:hover {
+              .header__menu--arrow-next {
+                @apply block
+              }
+
+              & + p {
+                @apply opacity-100 font-medium
+              }
+            }
+          }
+
+          a {
+            @apply font-semibold
+          }
+        }
+
+        .header__menu--title {
+          @apply font-semibold transition-none;
+          > p {
+            @apply text-[15px] transition-none;
+          }
+        }
+
+        &:hover, &:active {
+          &:has(:nth-child(2)) {
+            @apply h-fit;
+          }
+
+          .header__menu--data {
+            @apply py-2 w-full md:px-6 md:w-fit h-fit opacity-100 visible bg-color-50 dark:bg-color-200;
+            > * {
+              @apply flex-1 min-w-[300px] transition rounded-xl;
+            }
+          }
+
+          .header__menu--title {
+            @apply text-center;
+            img {
+              @apply rotate-180;
+            }
+          }
+        }
+
+      }
+    }
+
+    .header__bottom--actions {
+      @apply relative flex gap-1 items-center order-2 md:order-1
+    }
+  }
+}
