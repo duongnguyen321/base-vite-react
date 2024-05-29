@@ -27,8 +27,7 @@ function BackHome({ to = '/', ...props }: { to?: string; [key: string]: any }) {
       onClick={handleClick} // Sets the click event handler.
       {...props} // Spreads any additional props to the Button component.
     >
-      {t(`commons.${to !== '/' ? 'back' : 'backHome'}`)} // Retrieves the button
-      label from i18n resources.
+      {t(`commons.${to !== '/' ? 'back' : 'backHome'}`)}
     </Button>
   );
 }
