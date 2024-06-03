@@ -1,7 +1,7 @@
 import Text from '@components/Text.tsx';
 import useLanguage from '@context/Translation/hooks/useLanguage.tsx';
 
-const AboutPage = () => {
+function AboutPage() {
   const { t } = useLanguage();
   return (
     <Text

@@ -1,7 +1,8 @@
 import tw from '@helpers/tailwind.helper.ts';
-import React from 'react';
+import { motion, type Variants } from 'framer-motion';
+import React, { type ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   isRounded?: boolean;
   children: React.ReactNode;
@@ -34,14 +35,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  * @returns {React.FC} A functional component that renders a button.
  */
 function Button({
-  isLoading = false,
-  isRounded = false,
-  children,
-  type = 'button',
-  variant = 'default',
-  className,
-  ...props
-}: ButtonProps) {
+                  isLoading = false,
+                  isRounded = false,
+                  children,
+                  type = 'button',
+                  variant = 'default',
+                  className,
+                  ...props
+                }: ButtonProps) {
   const roundedClass = isRounded ? 'rounded-full' : 'rounded';
   const loadingClass = isLoading ? 'opacity-50 cursor-not-allowed' : '';
   const variantClass = (() => {
@@ -70,19 +71,43 @@ function Button({
         return 'bg-color-500 hover:bg-color-600 text-white';
     }
   })();
+  const variants: Variants = {
+    initial: { opacity: 1 },
+    click: {
+      opacity: 0.9,
+      scale: 0.965,
+      transition: {
+        type: 'spring',
+        duration: 0.2,
+      },
+    },
+    exit: {
+      opacity: 1,
+      transition: {
+        type: 'tween',
+        duration: 0.25,
+      },
+    },
+  };
 
   return (
-    <button
-      type={type}
-      className={tw(
-        `transition-all cursor-pointer focus:outline-0 ${roundedClass} ${loadingClass} ${variantClass} p-2 text-white`,
-        className,
-      )}
-      {...props}
-      disabled={isLoading}
+    <motion.div
+      variants={variants}
+      initial="initial"
+      whileTap="click"
     >
-      {children}
-    </button>
+      <button
+        type={type}
+        className={tw(
+          `transition-all cursor-pointer focus:outline-0 ${roundedClass} ${loadingClass} ${variantClass} p-2 text-white`,
+          className,
+        )}
+        {...props}
+        disabled={isLoading}
+      >
+        {children}
+      </button>
+    </motion.div>
   );
 }
 

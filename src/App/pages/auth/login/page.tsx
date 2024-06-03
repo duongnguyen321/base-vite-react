@@ -3,7 +3,7 @@ import useLoading from '@context/Loading/hooks/useLoading.tsx';
 import useLanguage from '@context/Translation/hooks/useLanguage.tsx';
 import useAuth from '@hooks/useAuth.tsx';
 
-const LoginPage = () => {
+function LoginPage () {
   const { t } = useLanguage();
   const { setAuth, getNextPath } = useAuth();
   const { loading, setLoading } = useLoading();

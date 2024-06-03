@@ -1,5 +1,7 @@
 import Loading from '@components/Loading.tsx';
+import PopupContainer from '@components/PopupContainer.tsx';
 import LoadingProvider from '@context/Loading/Loading.provider.tsx';
+import PopupProvider from '@context/Popup/Popup.provider.tsx';
 import ThemesProvider from '@context/Themes/Themes.provider.tsx';
 import LanguageProvider from '@context/Translation/Translation.provider.tsx';
 import { MainRouters } from '@router/routers.tsx';
@@ -13,8 +15,11 @@ function Main(): JSX.Element {
         <ThemesProvider>
           <BrowserRouter>
             <LoadingProvider>
-              <MainRouters />
-              <Loading />
+              <PopupProvider>
+                <MainRouters />
+                <PopupContainer />
+                <Loading />
+              </PopupProvider>
             </LoadingProvider>
           </BrowserRouter>
         </ThemesProvider>
