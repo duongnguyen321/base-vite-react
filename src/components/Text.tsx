@@ -1,3 +1,4 @@
+import useLoading from '@context/Loading/hooks/useLoading.tsx';
 import tw from '@helpers/tailwind.helper.ts';
 import type { ClassValue } from 'clsx';
 import { ElementType } from 'react';
@@ -9,22 +10,20 @@ import { ElementType } from 'react';
  * @param {React.ElementType} [props.as] - The type of element to render. Defaults to an empty string.
  * @param {string} [props.className] - The CSS class to apply to the element.
  * @param {string} [props.title] - The title of the element. If `children` is not provided, `title` will be used as the content.
+ * @param {boolean} [props.isLoading] - Whether the text is loading. If provided, combines with the global loading state.
  * @param {string} [props.children] - The children to be rendered within the element. If provided, this will override the `title`.
  * @returns {React.CElement|null} The rendered element, or null if neither `title` nor `children` are provided.
  */
-export default function Text({
-  title,
-  as,
-  className,
-  children,
-  ...props
-}: {
+export default function Text({ title, as, className, children, isLoading, ...props }: {
   as?: ElementType;
   className?: ClassValue;
   title?: string;
+  isLoading?: boolean;
   children?: string | string[];
   [key: string]: any;
 }) {
+  const { loading } = useLoading();
+  const _loading = isLoading !== undefined ? loading || isLoading : false;
   const As = as || 'p';
   let str = title?.trim();
   if (children) {
@@ -42,7 +41,7 @@ export default function Text({
           className={tw('break-words non-break', className)}
           {...props}
         >
-          {str}
+          {_loading ? '...' : str}
         </As>
       );
     }
@@ -51,8 +50,14 @@ export default function Text({
         className={tw('break-words non-break', className)}
         {...props}
       >
-        {str.slice(0, str.lastIndexOf(' ')).trimEnd()}&nbsp;
-        {str.slice(str.lastIndexOf(' ') + 1).trimStart()}
+        {_loading ? (
+          '...'
+        ) : (
+          <>
+            {str.slice(0, str.lastIndexOf(' ')).trimEnd()}&nbsp;
+            {str.slice(str.lastIndexOf(' ') + 1).trimStart()}
+          </>
+        )}
       </As>
     );
   }
