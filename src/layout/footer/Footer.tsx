@@ -1,5 +1,4 @@
 import AssetsImg from '@components/AssetsImg.tsx';
-import Button from '@components/Button.tsx';
 import Text from '@components/Text.tsx';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +35,7 @@ export default function Footer() {
         <Text as={'p'}>{t('footer.copy')}</Text>
       </div>
       {showScrollToTop && (
-        <Button
+        <button
           onClick={scrollToTop}
           className={
             'bg-transparent hover:!bg-transparent fixed bottom-5 right-5'
@@ -46,7 +45,7 @@ export default function Footer() {
             type={'icon'}
             name={'top.svg'}
           />
-        </Button>
+        </button>
       )}
     </footer>
   );

@@ -10,6 +10,12 @@ const defaultValue: PopupContextType = {
     content: '',
     wrapper: '',
   },
+  setClassNames: () => {},
+  action: {
+    current: () => {},
+  },
+  contentAction: '',
+  setContentAction: () => {},
 };
 const PopupContext = createContext<PopupContextType>(defaultValue);
 

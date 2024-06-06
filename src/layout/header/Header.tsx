@@ -1,5 +1,4 @@
 import AssetsImg from '@components/AssetsImg.tsx';
-import Button from '@components/Button.tsx';
 import LangSwitch from '@components/LangSwitch.tsx';
 import Logo from '@components/Logo.tsx';
 import Text from '@components/Text.tsx';
@@ -81,9 +80,9 @@ function Header() {
             size={'32'}
             className={tw(
               menuShow &&
-                (isFixed
-                  ? 'fixed top-[54px] left-[15px]'
-                  : 'fixed top-2 left-4'),
+              (isFixed
+                ? 'fixed top-[54px] left-[15px]'
+                : 'fixed top-2 left-4'),
             )}
           />
         </Link>
@@ -115,14 +114,14 @@ function Header() {
         <div className={headerStyle['header__bottom--actions']}>
           <div
             className={tw(
-              'w-fit h-full flex flex-wrap items-center gap-1',
+              'w-fit h-full flex items-center gap-1',
               menuShow && 'hidden',
             )}
           >
             <LangSwitch />
             <ThemeSwitch />
           </div>
-          <Button
+          <button
             className={tw(
               'transition-none max-w-[40px] max-h-[40px] py-1 bg-transparent hover:!bg-transparent dark:bg-color-400 dark:hover:!bg-color-500 outline-0 focus:outline-0 md:hidden z-50',
               menuShow
@@ -137,9 +136,9 @@ function Header() {
               type={'icon'}
               size={32}
               className={'block transition-none'}
-              name='menu.svg'
+              name="menu.svg"
             />
-          </Button>
+          </button>
         </div>
       </div>
     </header>

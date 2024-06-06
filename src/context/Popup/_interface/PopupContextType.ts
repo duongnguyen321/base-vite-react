@@ -1,5 +1,5 @@
 import type { ClassValue } from 'clsx';
-import type { ReactNode } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 
 type PopupContextType = {
   content: ReactNode;
@@ -8,6 +8,14 @@ type PopupContextType = {
   open: (content: ReactNode) => void;
   close: () => void;
   classNames: { wrapper: ClassValue; content: ClassValue };
+  setClassNames: Dispatch<
+    SetStateAction<{ wrapper: ClassValue; content: ClassValue }>
+  >;
+  contentAction: string;
+  setContentAction: Dispatch<SetStateAction<string>>;
+  action: {
+    current: () => void;
+  };
 };
 
 export default PopupContextType;

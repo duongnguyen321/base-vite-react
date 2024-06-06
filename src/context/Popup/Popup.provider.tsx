@@ -1,5 +1,6 @@
 import type ProviderProps from '@context/interface/Provider.types.ts';
-import { type ReactNode, useState } from 'react';
+import type { ClassValue } from 'clsx';
+import { type ReactNode, useRef, useState } from 'react';
 import PopupContext from 'src/context/Popup/Popup.context.tsx';
 
 interface PopupState {
@@ -12,6 +13,17 @@ const PopupProvider = ({ children }: ProviderProps) => {
     content: null,
     isOpen: false,
   });
+  const [classNames, setClassNames] = useState<{
+    wrapper: ClassValue;
+    content: ClassValue;
+  }>({
+    wrapper: '',
+    content: '',
+  });
+
+  const [contentAction, setContentAction] = useState('');
+
+  const action = useRef(() => {});
 
   const openPopup = (content: ReactNode) => {
     setPopupState({ content, isOpen: true });
@@ -19,6 +31,12 @@ const PopupProvider = ({ children }: ProviderProps) => {
 
   const closePopup = () => {
     setPopupState({ content: null, isOpen: false });
+    setClassNames({
+      wrapper: '',
+      content: '',
+    });
+    setContentAction('');
+    action.current = () => {};
   };
   return (
     <PopupContext.Provider
@@ -27,10 +45,11 @@ const PopupProvider = ({ children }: ProviderProps) => {
         isOpen: popupState.isOpen,
         open: openPopup,
         close: closePopup,
-        classNames: {
-          wrapper: '',
-          content: '',
-        },
+        classNames,
+        setClassNames,
+        action,
+        contentAction,
+        setContentAction,
       }}
     >
       {children}

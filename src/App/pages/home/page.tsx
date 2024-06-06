@@ -1,10 +1,12 @@
 import Text from '@components/Text.tsx';
 import usePopup from '@context/Popup/hooks/usePopup.tsx';
+import useNavigate from '@hooks/useNavigate.tsx';
 import { useTranslation } from 'react-i18next';
 
 function HomePage() {
   const { t } = useTranslation();
-  const { open } = usePopup();
+  const navigate = useNavigate();
+  const { open, setClassNames, setContentAction, action } = usePopup();
 
   function ContentPopup() {
     return (
@@ -13,6 +15,9 @@ function HomePage() {
   }
 
   function handleClick() {
+    setClassNames((prev) => ({ ...prev, content: 'items-start' }));
+    setContentAction('View my profile');
+    action.current = () => navigate('https://facebook.com/duongnguyen321');
     open(<ContentPopup />);
   }
 

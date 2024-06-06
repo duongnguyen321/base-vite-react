@@ -99,7 +99,10 @@ function Button({
       <button
         type={type}
         className={tw(
-          `transition-all cursor-pointer focus:outline-0 ${roundedClass} ${loadingClass} ${variantClass} p-2 text-white`,
+          'transition-all cursor-pointer focus:outline-0 p-2 text-white',
+          roundedClass,
+          loadingClass,
+          variantClass,
           className,
         )}
         {...props}

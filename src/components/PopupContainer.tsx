@@ -22,9 +22,9 @@ const variants: Variants = {
 };
 
 function PopupContainer() {
-  const { content, isOpen, close, classNames } = usePopup();
+  const { content, isOpen, close, classNames, action, contentAction } =
+    usePopup();
   const { t } = useTranslation();
-
   return (
     <motion.div
       className={tw(
@@ -41,18 +41,35 @@ function PopupContainer() {
     >
       <motion.div
         className={tw(
-          'bg-color-50 p-8 rounded-lg min-w-fit min-h-max flex flex-col items-center justify-center',
+          'relative bg-color-50 p-8 rounded-lg min-w-fit min-h-max flex flex-col items-center justify-center',
           classNames.content,
         )}
         onClick={(e) => e.stopPropagation()}
       >
         {content}
-        <Button
-          className={tw('mt-4 px-4 py-2 rounded-md min-w-40')}
-          onClick={close}
+
+        <motion.div
+          className={tw(
+            'w-full flex px-4 md:px-0',
+            contentAction ? 'justify-between' : 'justify-center',
+          )}
         >
-          {t('commons.back')}
-        </Button>
+          <Button
+            className={tw('mt-4 px-4 py-2 rounded-md min-w-40')}
+            onClick={close}
+          >
+            {t('commons.back')}
+          </Button>
+          {contentAction && (
+            <Button
+              variant={'error'}
+              className={tw('mt-4 px-4 py-2 rounded-md min-w-40')}
+              onClick={action.current}
+            >
+              {t(contentAction)}
+            </Button>
+          )}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
