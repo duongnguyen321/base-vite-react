@@ -9,7 +9,7 @@ function CheckoutPage({ ...props }: ChildrenPropsInterface) {
   const { t } = useLanguage();
   const { searchParams } = props;
   if (!searchParams?.orderId) {
-    return <CheckoutErrorPage />;
+    return <CheckoutErrorPage code={'-12'} />;
   }
   return (
     <section className={homeCheckoutStyle['section']}>

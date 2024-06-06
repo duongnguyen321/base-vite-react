@@ -15,17 +15,25 @@ function useNavigate() {
   const _navigate = _useNavigate();
   const location = useLocation();
 
-  return (to: string) => {
+  return (to: string, force?: boolean) => {
+    if (force) {
+      window.location.href = to;
+      return null;
+    }
     if (to.startsWith('/')) {
       _navigate(to, { replace: true });
+      return null;
     } else if (to.startsWith('.') || to.startsWith('..')) {
       const newPath = new URL(to, window.location.origin + location.pathname)
         .pathname;
       _navigate(newPath, { replace: true });
+      return null;
     } else if (to.startsWith('http')) {
       window.location.href = to;
+      return null;
     } else if (to === '#') {
       window.location.hash = '';
+      return null;
     }
   };
 }
