@@ -6,7 +6,10 @@
   },
   "errors": {
     "form": {
-      "required": "This field cannot be empty!"
+      "required": "This field cannot be empty!",
+      "email": "Invalid email",
+      "password": "Password must be between 6 to 32 characters",
+      "username": "Username must be between 6 to 32 characters"
     },
     "page": {
       "checkout": {
@@ -73,7 +76,7 @@
           {
             "name": "Checkout page",
             "description": "This page is outside the layout",
-            "link": "/checkout",
+            "link": "/checkout?orderId=1",
             "icon": "En.svg"
           },
           {
@@ -96,7 +99,7 @@
           {
             "name": "Checkout page",
             "description": "This page is outside the layout",
-            "link": "/checkout",
+            "link": "/checkout?orderId=2",
             "icon": "En.svg"
           },
           {
@@ -132,7 +135,9 @@
     "title": "About Duongnuyen"
   },
   "login": {
-    "title": "Click here to log in"
+    "title": "Click here to log in",
+    "register": "Don't have an account? Register now",
+    "success": "Login successful"
   },
   "profile": {
     "title": "Click here to log out"

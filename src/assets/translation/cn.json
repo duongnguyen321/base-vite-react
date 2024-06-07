@@ -6,7 +6,10 @@
   },
   "errors": {
     "form": {
-      "required": "此字段不能为空！"
+      "required": "此字段不能为空！",
+      "email": "无效的电子邮件",
+      "password": "密码必须为6到32个字符",
+      "username": "用户名必须为6到32个字符"
     },
     "page": {
       "checkout": {
@@ -73,7 +76,7 @@
           {
             "name": "结账页面",
             "description": "此页面在布局之外",
-            "link": "/checkout",
+            "link": "/checkout?orderId=1",
             "icon": "Cn.svg"
           },
           {
@@ -96,7 +99,7 @@
           {
             "name": "结账页面",
             "description": "此页面在布局之外",
-            "link": "/checkout",
+            "link": "/checkout?orderId=2",
             "icon": "Cn.svg"
           },
           {
@@ -132,7 +135,9 @@
     "title": "关于Duongnuyen"
   },
   "login": {
-    "title": "点击这里登录"
+    "title": "点击这里登录",
+    "register": "还没有账号？立即注册",
+    "success": "登录成功"
   },
   "profile": {
     "title": "点击这里登出"

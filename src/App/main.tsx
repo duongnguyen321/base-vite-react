@@ -7,6 +7,7 @@ import LanguageProvider from '@context/Translation/Translation.provider.tsx';
 import { MainRouters } from '@router/routers.tsx';
 import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Toaster } from 'sonner';
 
 function Main(): JSX.Element {
   return (
@@ -19,6 +20,10 @@ function Main(): JSX.Element {
                 <MainRouters />
                 <PopupContainer />
                 <Loading />
+                <Toaster
+                  richColors
+                  position={'top-right'}
+                />
               </PopupProvider>
             </LoadingProvider>
           </BrowserRouter>

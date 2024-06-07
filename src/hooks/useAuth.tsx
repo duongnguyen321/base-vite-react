@@ -1,45 +1,57 @@
-import type { UseAuthReturnType } from '@interface/hooks/useAuth.interface.ts';
-import { useCallback, useState } from 'react';
+import type { UseAuthReturnType, UseAuthSaveData } from '@interface/hooks/useAuth.interface.ts';
+import { useCallback, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 /**
- * Custom hook for managing authentication state within a React application.
- * It provides functionality to check if a user is authenticated, set the authentication state,
- * and determine the next path to navigate after authentication actions.
+ * Custom hook to manage authentication state.
  *
- * @returns {UseAuthReturnType} An object containing the authentication state (`isAuth`),
- * a method to update the authentication state (`setAuth`), and a method to get the next path (`getNextPath`).
+ * This hook provides functionality to check if a user is authenticated,
+ * to set the authentication state, to log out, and to get the next path
+ * for redirection after login based on URL search parameters.
+ *
+ * @returns {UseAuthReturnType} The authentication state and helper functions.
  */
-function useAuth(): UseAuthReturnType {
-  // State to manage authentication status, initialized based on local storage.
-  const [isAuth, setIsAuthenticated] = useState<boolean>(() => {
-    const storedAuth = localStorage.getItem('isAuth');
-    return storedAuth === 'true';
-  });
+ function useAuth(): UseAuthReturnType {
+  // State hooks for user ID and token, initialized from localStorage
+  const [userId, setUserId] = useState<string>(localStorage.getItem('userId') || '');
+  const [token, setToken] = useState<string>(localStorage.getItem('token') || '');
 
-  // Hook to access search parameters from the URL.
+  // Hook to access URL search parameters
   const [searchParams] = useSearchParams();
 
   /**
-   * Updates the authentication state both in local storage and the component state.
-   * @param {boolean} authState The new authentication state to set.
+   * Sets the authentication state both in localStorage and state hooks.
+   *
+   * @param {UseAuthSaveData} saveData - The user ID and token to save.
    */
-  const setAuth = useCallback((authState: boolean) => {
-    localStorage.setItem('isAuth', String(authState));
-    setIsAuthenticated(authState);
+  const setAuth = useCallback(({ userId, token }: UseAuthSaveData) => {
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('token', token);
+    setUserId(userId);
+    setToken(token);
   }, []);
 
   /**
-   * Determines the next path to navigate based on the 'next' query parameter in the URL.
-   * Defaults to '/profile' if the 'next' parameter is not present.
-   * @returns {string} The path to navigate to next.
+   * Logs out the user by clearing the authentication state and invoking a callback function.
+   *
+   * @param {Function} callback - A callback function to execute after logging out.
    */
-  const getNextPath = useCallback(() => {
-    const next = searchParams.get('next');
-    return next || '/profile';
-  }, [searchParams]);
+  const logout = useCallback((callback: () => void) => {
+    setAuth({ userId: '', token: '' });
+    callback();
+  }, [setAuth]);
 
-  return { isAuth, setAuth, getNextPath };
+  /**
+   * Retrieves the next path from URL search parameters or defaults to '/profile'.
+   *
+   * @returns {string} The next path for redirection.
+   */
+  const getNextPath = useCallback(() => searchParams.get('next') || '/profile', [searchParams]);
+
+  // Determines if the user is authenticated based on the presence of userId and token
+  const isAuth = useMemo(() => !!userId && !!token, [userId, token]);
+
+  return { isAuth, userId, token, setAuth, logout, getNextPath };
 }
 
 export default useAuth;

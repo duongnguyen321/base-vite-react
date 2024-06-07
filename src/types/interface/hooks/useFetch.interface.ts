@@ -32,8 +32,6 @@ export interface FetchArgs {
   body?: Record<string, any>;
   options?: RequestInit;
   headers?: HeadersInit;
-  cached?: boolean;
-  cacheDuration?: string;
   refetchOnConnect?: boolean;
   refetchOnFocus?: boolean;
   refetchInterval?: string;
@@ -47,6 +45,7 @@ export interface FetchResponse<T> {
   errors?: any[];
   message?: string;
   timestamp?: number;
+  isError?: boolean;
   rawData: ApiResponseData | ApiErrorResponse;
 }
 
@@ -61,9 +60,4 @@ export interface UseFetchResponse<T> extends FetchResponse<T> {
   isSuccess: boolean;
   timestamp: number | undefined;
   status: number;
-}
-
-export interface FetchCacheEntry<T> {
-  timestamp: number;
-  data: FetchResponse<T>;
 }

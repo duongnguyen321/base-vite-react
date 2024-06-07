@@ -6,4 +6,5 @@ export interface RoutesMapInterface {
   title: string;
   Element: React.FC<any>;
   Layout?: React.FC<DefaultProps & { children?: React.ReactNode }>;
+  nested?: RoutesMapInterface[];
 }

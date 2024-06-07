@@ -1,6 +1,6 @@
 import tw from '@helpers/tailwind.helper.ts';
 import type { ClassValue } from 'clsx';
-import { type InputHTMLAttributes, useState } from 'react';
+import { type InputHTMLAttributes, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Text from './Text';
@@ -32,7 +32,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  * @param {string} props.name - The name of the input field, used for form registration and error handling.
  * @param {boolean} [props.loading=false] - If true, the input is disabled to indicate a loading state.
  * @param {Object} [props.classNames] - Optional custom Tailwind CSS classes for styling the input _components.
- * @param {String} [props.className] - Custom class for the input element.
  * @param {ClassValue} [props.classNames.wrapper] - Custom class for the wrapper div.
  * @param {ClassValue} [props.classNames.input] - Custom class for the input element.
  * @param {ClassValue} [props.classNames.label] - Custom class for the label element.
@@ -46,25 +45,25 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  * @returns {JSX.Element} A JSX element representing the input field, including label, validation error messages, and support for custom styling.
  */
 function Input({
-  required,
-  name,
-  loading,
-  classNames,
-  className,
-  rules = {
-    required,
-  },
-  label,
-  placeholder,
-  ...props
-}: InputProps) {
+                 required,
+                 name,
+                 loading,
+                 classNames,
+                 className,
+                 rules = {
+                   required,
+                 },
+                 label,
+                 placeholder,
+                 ...props
+               }: InputProps) {
+  const inputRef = useRef<HTMLInputElement>();
   const {
     register,
     formState: { errors },
     trigger,
   } = useFormContext();
   const { t } = useTranslation();
-  const [focus, setFocus] = useState(false);
   const adjustedRules = {
     ...rules,
     required: rules?.required
@@ -74,10 +73,11 @@ function Input({
       : false,
   };
 
+  const { ref, ...rest } = register(name, adjustedRules);
   return (
     <div
       className={tw(
-        'relative w-fit min-w-[200px] h-full',
+        'relative w-fit min-w-[200px] h-full input-container',
         className,
         classNames?.wrapper,
       )}
@@ -85,31 +85,30 @@ function Input({
     >
       <label
         className={tw(
-          'relative block w-full pl-2 pr-2 pt-3 pb-2 border bg-color-50 dark:bg-color-200 rounded-xl',
+          'relative block w-full pl-2 pr-2 pt-4 pb-2 border bg-color-50 dark:bg-color-200 rounded-xl label',
           errors[name] ? 'border-red-500' : 'border-gray-500',
           classNames?.label,
         )}
-        onClick={() => setFocus(true)}
         htmlFor={name}
       >
         <input
           id={name}
-          {...register(name, adjustedRules)}
-          className={tw('bg-transparent', classNames?.input)}
-          onBlur={async (e) => {
-            await trigger(name);
-            if (!e.target.value) {
-              setFocus(false);
+          placeholder={' '}
+          ref={(refData) => {
+            ref(refData);
+            if (refData) {
+              inputRef.current = refData;
             }
           }}
-          onFocus={() => setFocus(true)}
+          {...rest}
+          className={tw('bg-transparent input', classNames?.input)}
+          onBlur={() => trigger(name)}
           disabled={loading}
           {...props}
         />
         <p
           className={tw(
-            'absolute transition-all top-3 left-4 text-[16px]',
-            focus && '-translate-y-3 -translate-x-2 text-sm text-neutral-400',
+            'absolute transition-all top-3 left-4 text-[16px] placeholder',
           )}
         >
           {(label || placeholder) ?? name}
@@ -120,7 +119,8 @@ function Input({
       {errors[name] && (
         <Text
           as={'p'}
-          className='absolute text-[12px] px-2 py-1 rounded-md bottom-0 right-2 translate-y-2 bg-error-500 w-fit text-white z-50'
+          className='absolute text-[12px] px-2 py-1 rounded-md bottom-0 right-2 translate-y-2 bg-error-500 w-fit text-white z-50 error'
+          onClick={() => inputRef.current?.focus()}
         >
           {errors[name]?.message?.toString() ?? t('errors.form.required')}
         </Text>

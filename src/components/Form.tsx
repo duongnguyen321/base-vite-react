@@ -1,4 +1,5 @@
 import tw from '@helpers/tailwind.helper';
+import type { ClassValue } from 'clsx';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Button from './Button';
@@ -10,9 +11,10 @@ interface FormProps {
   onSubmit?: (data: Record<string, any>) => void;
   titleSubmit?: string;
   onLoading?: boolean;
+  className?: ClassValue;
   classNames?: {
-    form?: string;
-    button?: string;
+    form?: ClassValue;
+    button?: ClassValue;
   };
 }
 
@@ -33,16 +35,14 @@ interface FormProps {
  * @returns {React.FC} - A React functional component that renders the form.
  */
 function Form({
-  defaultValues,
-  children,
-  onSubmit,
-  titleSubmit = 'Submit',
-  onLoading = false,
-  classNames = {
-    form: '',
-    button: '',
-  },
-}: FormProps) {
+                defaultValues,
+                children,
+                onSubmit,
+                titleSubmit = 'Submit',
+                onLoading = false,
+                classNames = {},
+                className,
+              }: FormProps) {
   const methods = useForm({ defaultValues });
   const handleSubmit = methods.handleSubmit(
     (data) => onSubmit && onSubmit(data),
@@ -52,13 +52,13 @@ function Form({
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit}
-        className={tw(classNames?.form)}
+        className={tw(classNames?.form, className)}
       >
         {children}
         <Button
           isRounded
-          type='submit'
-          variant='success'
+          type="submit"
+          variant="success"
           disabled={onLoading}
           className={tw(classNames?.button)}
         >

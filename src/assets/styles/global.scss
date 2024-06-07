@@ -122,25 +122,37 @@ span.non-break {
 }
 
 *::-webkit-scrollbar-track,
-.horizontal-scrollable::-webkit-scrollbar-track {
+.horizontal-scrollable::-webkit-scrollbar-track,
+.vertical-scrollable::-webkit-scrollbar-track {
   background: rgb(230, 225, 225);
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb,
-.horizontal-scrollable::-webkit-scrollbar-thumb {
+.horizontal-scrollable::-webkit-scrollbar-thumb,
+.vertical-scrollable::-webkit-scrollbar-thumb {
   background: rgb(190, 183, 183);
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb:active,
-.horizontal-scrollable::-webkit-scrollbar-thumb:active {
+.horizontal-scrollable::-webkit-scrollbar-thumb:active,
+.vertical-scrollable::-webkit-scrollbar-thumb:active {
   @apply bg-primary;
 }
 
 .horizontal-scrollable {
   overflow-x: auto;
 }
+
+.vertical-scrollable {
+  overflow-y: auto;
+}
+
+.vertical-scrollable::-webkit-scrollbar {
+  width: 10px;
+}
+
 
 .horizontal-scrollable::-webkit-scrollbar {
   height: 10px;
@@ -153,5 +165,22 @@ textarea {
 form {
   *:focus {
     outline: none;
+  }
+}
+
+.input-container {
+  .error {
+    @apply transition-opacity
+  }
+
+  .input:focus + .placeholder,
+  :not(.input:placeholder-shown) + .placeholder,
+  .input:-webkit-autofill + .placeholder {
+    @apply -translate-y-3 -translate-x-2 text-sm text-neutral-400;
+  }
+
+  .label:has(.input:focus,
+  .input:-webkit-autofill) + .error {
+    @apply opacity-0
   }
 }

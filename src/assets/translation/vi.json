@@ -6,7 +6,10 @@
   },
   "errors": {
     "form": {
-      "required": "Trường thông tin không được để trống!"
+      "required": "Trường thông tin không được để trống!",
+      "email": "Email không hợp lệ",
+      "password": "Mật khẩu phải từ 6 đến 32 ký tự",
+      "username": "Tên đăng nhập phải từ 6 đến 32 ký tự"
     },
     "page": {
       "checkout": {
@@ -73,7 +76,7 @@
           {
             "name": "Trang thanh toán",
             "description": "Trang này nằm ngoài layout",
-            "link": "/checkout",
+            "link": "/checkout?orderId=1",
             "icon": "Vi.svg"
           },
           {
@@ -96,7 +99,7 @@
           {
             "name": "Trang thanh toán",
             "description": "Trang này nằm ngoài layout",
-            "link": "/checkout",
+            "link": "/checkout?orderId=2",
             "icon": "Vi.svg"
           },
           {
@@ -132,7 +135,9 @@
     "title": "Về Duongnuyen"
   },
   "login": {
-    "title": "Bấm vào đây để đăng nhập"
+    "title": "Bấm vào đây để đăng nhập",
+    "register": "Chưa có tài khoản? Đăng ký ngay",
+    "success": "Đăng nhập thành công"
   },
   "profile": {
     "title": "Bấm vào đây để đăng xuất"

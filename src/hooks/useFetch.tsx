@@ -42,7 +42,7 @@ function useFetch<T = any>(
     [t],
   );
 
-  const generateCacheKey = useCallback(() => {
+  const getUrl = useCallback(() => {
     const queryParams = new URLSearchParams(args?.search || {}).toString();
     return `${args?.url || SERVER_URL}${path}?${queryParams}`;
   }, [args?.url, path, args?.search]);
@@ -64,7 +64,7 @@ function useFetch<T = any>(
     };
 
     try {
-      const res = await fetch(generateCacheKey(), fetchOptions);
+      const res = await fetch(getUrl(), fetchOptions);
       const json = (await res.json()) as ApiResponseData | ApiErrorResponse;
       const isError = json.error;
       const responseData = {
@@ -78,6 +78,7 @@ function useFetch<T = any>(
           : json.message,
         timestamp: Date.now(),
         rawData: json,
+        isError,
       };
       setResponse(responseData as FetchResponse<T>);
       setIsError(isError);
@@ -90,6 +91,7 @@ function useFetch<T = any>(
         errors: [error],
         message: t('response.error'),
         rawData: defaultErrorResponse,
+        isError: true,
       });
     } finally {
       setIsLoading(false);
@@ -100,7 +102,7 @@ function useFetch<T = any>(
     args?.options,
     args?.headers,
     defaultErrorResponse,
-    generateCacheKey,
+    getUrl,
     t,
   ]);
 
@@ -118,7 +120,7 @@ function useFetch<T = any>(
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [args?.refetchInterval]);
+  }, [args?.refetchInterval])
 
   return {
     data: response?.data,

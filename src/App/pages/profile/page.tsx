@@ -2,36 +2,38 @@ import Text from '@components/Text.tsx';
 import useLoading from '@context/Loading/hooks/useLoading.tsx';
 import useLanguage from '@context/Translation/hooks/useLanguage.tsx';
 import useAuth from '@hooks/useAuth.tsx';
+import useNavigate from '@hooks/useNavigate.tsx';
 
-const ProfilePage = () => {
+function ProfilePage() {
   const { t } = useLanguage();
-  const { setAuth, getNextPath } = useAuth();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const { loading, setLoading } = useLoading();
-  const navigate = (path: string) => {
-    window.location.href = path;
-  };
 
-  async function logout() {
+  async function handleLogout() {
     if (loading) {
       return;
     }
-    const nextPath = getNextPath();
     setLoading(true);
     await new Promise((resolve) => {
-      setTimeout(resolve, 1000);
-      setAuth(false);
-      navigate(`/auth/login?next=${nextPath}`);
-    }).finally(() => setLoading(false));
+      setTimeout(() =>
+          resolve(() =>
+            logout(() =>
+              navigate('/auth/login', true))),
+        300);
+    });
+    setLoading(false);
   }
 
   return (
     <Text
       as={'h1'}
       className={'text-color-900'}
-      onClick={logout}
+      onClick={handleLogout}
     >
       {t('profile.title')}
     </Text>
   );
-};
+}
+
 export default ProfilePage;

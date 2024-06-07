@@ -6,6 +6,9 @@ export const patternUUID =
   /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 export const patternPhone =
   /^(?:\+84|0)(3|5|7|8|9|1[2|6|8|9])([0-9]{8})$|^(?:\+84|0)2([0-9]{9})$|^(?:\+84|0)?1900([0-9]{4,6})$/;
+export const patternUsername = /^[a-zA-Z0-9]{5,32}$/;
+export const patternPassword = /^.{6,32}$/;
+export const patternOTP = /^[0-9]{6}$/;
 
 /**
  * Function to check if a string is a valid email.
