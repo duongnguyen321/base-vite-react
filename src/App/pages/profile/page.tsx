@@ -15,12 +15,11 @@ function ProfilePage() {
       return;
     }
     setLoading(true);
-    await new Promise((resolve) => {
-      setTimeout(() =>
-          resolve(() =>
-            logout(() =>
-              navigate('/auth/login', true))),
-        300);
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        logout(() => navigate('/auth/login', true));
+        resolve();
+      }, 300);
     });
     setLoading(false);
   }
