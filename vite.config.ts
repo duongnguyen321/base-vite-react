@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
             dom: ['react-dom'],
             router: ['react-router-dom'],
             ui: ['react-hook-form', 'react-i18next', 'framer-motion'],
-            utils: ['moment', 'markdown-it', 'react-google-recaptcha-v3'],
+            utils: ['moment', 'markdown-it', 'react-google-recaptcha-v3', 'sonner'],
           },
         },
       },
